@@ -821,11 +821,8 @@ function resolveFeishuSession(
   if (!typeExplicit) {
     if (idLower.startsWith("ou_") || idLower.startsWith("on_")) {
       isGroup = false;
-    } else if (idLower.startsWith("oc_")) {
-      // oc_ is a chat_id - default to group chat since that's the common use case
-      // (DM with oc_ is rare and requires explicit prefix)
-      isGroup = true;
     }
+    // oc_ requires explicit prefix: dm:oc_xxx or group:oc_xxx
   }
 
   const peer: RoutePeer = {
